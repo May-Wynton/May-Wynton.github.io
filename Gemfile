@@ -15,4 +15,6 @@ group :jekyll_plugins do
   gem "jekyll-include-cache"
   gem "jekyll-algolia"
   gem "webrick"
+  gem 'jekyll-target-blank', '~> 2.0'
+  gem 'jekyll-redirect-from'
 end
