@@ -62,7 +62,7 @@ author:
   bio    : " Welcome to my website!  Right now it is just my resume but I'm working on adding a portfolio and a blog."
   links:
     - label: "Itch"
-      icon: "fab fa-fw fa-twitter-square"
+      icon: "fab fa-itch-io"
       url: "https://plushie-castle.itch.io/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
