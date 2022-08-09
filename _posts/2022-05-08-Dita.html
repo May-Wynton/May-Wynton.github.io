@@ -32,11 +32,39 @@ author_profile: false
 <h1>Why Use DITA?</h1>
     <p>I suggested using DITA at my work because our Word document had grown to be over 100 pages. It was cumbersome to make updates and slow for us to work on it at the same time using a cloud-based editor. It is a lot of work to migrate such a large document into XML but it is still cost effective because documentation needs to be updated frequently for a long time. I have found many reasons why topic-based authoring is effective for technical documentation.</p>
 <h2>Maintaining a Uniform Document Style on a Project with Multiple Authors</h2>
-<figure>
-    <img src="\assets\images\TaskDita.png" alt="An example of the task structure for DITA " width="50" height="50">
-    <figcaption>Fig.1 The task topic</figcaption>
-  </figure>
     <p>Unlike with the word and HTML, DITA has a very strict document structure. Each topic is organized in a very specific way and cannot be published in another format unless it is structured correctly. I am using the default topic types but organizations can create custom structures. I can also apply styling rules for the entire document by using DITA properties and CSS. Ideally all authors should adhere to a style guide but with DITA they must order information in a set way. </p>
+    <p>Example of task structure:</p>
+    <pre>
+      <code>
+        &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+        &lt;!DOCTYPE task PUBLIC &quot;-//OASIS//DTD DITA Task//EN&quot; &quot;task.dtd&quot;&gt; 
+        &lt;task id='tk_readability_default'&gt; 
+          &lt;title&gt;Default&lt;/title&gt; 
+            &lt;taskbody&gt; 
+              &lt;context&gt; 
+                &lt;fig&gt;
+                  &lt;title&gt;Screenshot: 
+                  &lt;/title&gt; 
+                    &lt;desc&gt; 
+                      &lt;cite&gt; &lt;/cite&gt; 
+                    &lt;/desc&gt; 
+                    &lt;image conkeyref=&quot;images/readability_default&quot;&gt; 
+                    &lt;/image&gt; 
+                &lt;/fig&gt; 
+              &lt;/context&gt; 
+              &lt;steps&gt; 
+                &lt;step&gt; 
+                 &lt;cmd&gt; &lt;/cmd&gt; 
+                &lt;/step&gt; 
+                &lt;step&gt; 
+                  &lt;cmd&gt; 
+                &lt;/step&gt;
+              &lt;/steps&gt;
+            &lt;/taskbody&gt; 
+          &lt;/task&gt;
+    
+      </code>
+    </pre>
 <h2>Modularity</h2>
 <figure>
     <img src="\assets\images\Topics.png" alt="Screenshot of a folder in windows File Explorer with dita files in it" width="50" height="50">
@@ -44,10 +72,17 @@ author_profile: false
   </figure>
     <p>DITA is modular. Each DITA document is made up of many DITA topics that are organized into a DITA map.  This is incredibly useful when documentation covers the same topics for multiple products or languages. Instead of wasting time rewriting similar content or copy/pasting content information is reorganized using a new DITA map. This also means that the structure of the whole document is flexible and different ways of organizing information can be experimented with. DITA maps also have a strict structure so all the table of contents or site maps will follow the same style as well.</p>
 <h2>Resource Management</h2>
-<figure>
-    <img src="\assets\images\Keys.png" alt="Screenshot of Dita key definitions" width="50" height="50">
-    <figcaption>Fig.3 The href of these keys can be changed for different DITA maps. </figcaption>
-  </figure>
     <p>DITA allows for easy reuse of resources like images, videos, or frequently referenced links.  Instead of directly referencing resources within a document resources and topics can be indirectly reference using a key. Keys are defined in DITA maps.  If multiple products use the same instructions but need different pictures the keys can be redefined without having to change anything in those topics.</p>
+    <p>The href of these keys can be changed for different DITA maps.</p>
+    <pre>
+      <code>
+        &lt;keydef keys=&quot;images&quot; href=&quot;ImageMap.dita&quot;&gt;&lt;/keydef&gt; 
+        &lt;keydef keys=&quot;textsize_task&quot; href=&quot;Sidebar/Tasks/tk_readability_textsize.dita&quot;/&gt; 
+        &lt;keydef keys=&quot;marginsize_task&quot; href=&quot;Sidebar/Tasks/tk_readability_marginsize.dita&quot;/&gt; 
+        &lt;keydef keys=&quot;darkmode_task&quot; href=&quot;Sidebar/Tasks/tk_readability_darkmode.dita&quot;/&gt; 
+        &lt;keydef keys=&quot;default_task&quot; href=&quot;Sidebar/Tasks/tk_readability_default.dita&quot;/&gt; 
+        &lt;keydef keys=&quot;beeline_concept&quot; href=&quot;Sidebar/Concepts/c_readability_beeline.dita&quot;/&gt;
+      </code>
+    </pre>
 <h2>Publishing in multiple formats</h2>
-    <p>DITA is a standard for organizing information that is outputted to multiple formats. This means that a single repository of topics uses multiple formats while maintaining the same style. I think this is especially useful for HTML because authors can create consistent HTML that web designers can then edit or style easily.</p>
+    <p>DITA is a standard for organizing information that is outputted to multiple formats. This means that a single repository of topics is used for multiple formats while maintaining the same style. I think this is especially useful for HTML because authors can create consistent HTML that web designers can then edit or style easily.</p>
