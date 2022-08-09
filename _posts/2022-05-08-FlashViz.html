@@ -8,6 +8,9 @@ tags:
   - Technical Writing
 author_profile: false
 ---
+<head>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
 <h1 id="Davis-Hackathon-2022-Visualizing-Flashes-in-Video">Davis Hackathon 2022-Visualizing Flashes in Video<a class="anchor-link" href="#Davis-Hackathon-2022-Visualizing-Flashes-in-Video">&#182;</a></h1>
 <p>In spring of 2022 I participated in a hackathon at UC Davis. I collaborated with Kay Krachenfels, Omar Khan, and Michelle Lu to begin work on an application that inserts photo-sensitivity warnings into video. During the 24 hours of the hackathon, we visualized where flashes happened in videos and created a web page where users could upload video files for processing. 24 hours was not enough time to engineer a way to accurately make predictions, but I am proud of what we accomplished.</p>
 
@@ -85,75 +88,118 @@ author_profile: false
 
 <p>I tried visualizing three different kinds of video: Partial flashes on a black background, flashes in an animated video, and flashes in a live action video.</p>
 <h3>Partial flashes on a black background </h3>
-<figure>
-    <figcaption>Partial flashes on a black background</figcaption>
-    <image src='/assets/images/partflash.png'>
-    </image>
-</figure>
-<figure>
-    <figcaption>Partial flashes on a black background graphed as changes in luminance:</figcaption>
-    <image src='/assets/images/partflashfull.png'>
-    </image>
-</figure>
-<figure>
-    <figcaption>Partial flashes on a black background 25 frames frame slice</figcaption>
-    <image src='/assets/images/partflash25.png'>
-    </image>
-</figure>
-<figure>
-    <figcaption>Partial flashes on a black background with a change in luminance over 0.3</figcaption>
-    <image src='/assets/images/partflash03.png'>
-    </image>
-</figure>
+<div class="imrow">
+    <div class="imcolumn">
+        <figure>
+            <figcaption>Partial flashes on a black background</figcaption>
+            <image src='/assets/images/partflash.png'>
+            </image>
+        </figure>
+    </div>
+    <div class="imcolumn">
+        <figure>
+            <figcaption>Partial flashes on a black background graphed as changes in luminance:</figcaption>
+            <image src='/assets/images/partflashfull.png'>
+            </image>
+        </figure>
+    </div>
+    </div>
+    
+    <div class="imrow">
+        <div class="imcolumn">
+            <figure>
+                <figcaption>Partial flashes on a black background 25 frames frame slice</figcaption>
+                <image src='/assets/images/partflash25.png'>
+                </image>
+            </figure>
+        </div>
+        <div class="imcolumn">
+            <figure>
+                <figcaption>Partial flashes on a black background with a change in luminance over 0.3</figcaption>
+                <image src='/assets/images/partflash03.png'>
+                </image>
+            </figure>
+        </div>
+
+    </div>
 
 
 <h3>Flashes in a cartoon</h3>
+<div class="imrow">
+    <div class="imcolumn">
+        <figure>
+            <figcaption>An example of a flash in an episode of Pokémon:</figcaption>
+            <image src='/assets/images/pory.png'>
+            </image>
+        </figure>
+    </div>
+    <div class="imcolumn">
+        <figure>
+            <figcaption>Flashes in an episode of Pokémon graphed as changes in luminance</figcaption>
+            <image src='/assets/images/poryfull.png'>
+            </image>
+        </figure>
+    </div>
+    </div>
+    
+    <div class="imrow">
+        <div class="imcolumn">
+            <figure>
+                <figcaption>Flashes in an episode of Pokémon 25 frame slice</figcaption>
+                <image src='/assets/images/pory25.png'>
+                </image>
+            </figure>
+        </div>
+        <div class="imcolumn">
+           
+        <figure>
+            <figcaption>Flashes in an episode of Pokémon With the change in luminance over .7</figcaption>
+            <image src='/assets/images/pory07.png'>
+            </image>
+        </figure>
+        </div>
 
-<figure>
-    <figcaption>An example of a flash in an episode of Pokémon:</figcaption>
-    <image src='/assets/images/pory.png'>
-    </image>
-</figure>
-
-<figure>
-    <figcaption>Flashes in an episode of Pokémon graphed as changes in luminance</figcaption>
-    <image src='/assets/images/poryfull.png'>
-    </image>
-</figure>
-
-<figure>
-    <figcaption>Flashes in an episode of Pokémon 25 frame slice</figcaption>
-    <image src='/assets/images/pory25.png'>
-    </image>
-</figure>
-
-<figure>
-    <figcaption>Flashes in an episode of Pokémon With the change in luminance over .7</figcaption>
-    <image src='/assets/images/pory07.png'>
-    </image>
-</figure>
+    </div>
 
 <h3>Flashes in live action video:</h3>
+<div class="imrow">
+    <div class="imcolumn">
+        <figure>
+            <figcaption>An example of a flash in an Alien movie</figcaption>
+            <image src='/assets/images/alien.png'>
+            </image>
+        </figure>
+    </div>
+    <div class="imcolumn">
+        <figure>
+            <figcaption>Flashes in an alien movie graphed as changes in luminance:</figcaption>
+            <image src='/assets/images/livefull.png'>
+            </image>
+        </figure>
+    </div>
+    </div>
+    
+    <div class="imrow">
+        <div class="imcolumn">
+           
+            <figure>
+                <figcaption>Flashes in an alien movie 200 frame slice</figcaption>
+                <image src='/assets/images/live25.png'>
+                </image>
+            </figure>
+        </div>
+        <div class="imcolumn">
+           
+            <figure>
+                <figcaption>Flashes in an alien movie With changes in luminance over .4</figcaption>
+                <image src='/assets/images/live04.png'>
+                </image>
+            </figure>
+        </div>
 
-<figure>
-    <figcaption>An example of a flash in an Alien movie</figcaption>
-    <image src='/assets/images/alien.png'>
-    </image>
-</figure>
+    </div>
 
-<figure>
-    <figcaption>Flashes in an alien movie graphed as changes in luminance:</figcaption>
-    <image src='/assets/images/livefull.png'>
-    </image>
-</figure>
 
-<figure>
-    <figcaption>Flashes in an alien movie 200 frame slice</figcaption>
-    <image src='/assets/images/live25.png'>
-    </image>
-</figure>
-<figure>
-    <figcaption>Flashes in an alien movie With changes in luminance over .4</figcaption>
-    <image src='/assets/images/live04.png'>
-    </image>
-</figure>
+
+
+
