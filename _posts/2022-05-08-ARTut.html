@@ -1,0 +1,320 @@
+---
+title: "Creating an AR Sculpture"
+excerpt_separator: "<!--more-->"
+categories:
+  - Blog
+tags:
+  - Technology
+  - Technical Writing
+author_profile: false
+---
+<head>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<p>This guide will teach you how to use the Unity Engine to spawn a 3d object in augmented reality. No programming knowledge is required but it is recommended that you are already familiar with the Unity Editor. If you are completely new to Unity complete this <a href="https://learn.unity.com/project/start-creating-1?uv=2019.4&pathwayId=5f7bcab4edbc2a0023e9c38f&missionId=5f77cc6bedbc2a4a1dbddc46">tutorial</a> first. 
+</p>
+<p>
+    After this tutorial you should be able to configure a project for AR development and become familiar with some core components of AR Foundations.
+</p>
+<h1>What You Will Need</h1>
+    <ul>
+        <li>
+            Unity version 2020.3.20f with android build support modules installed
+        </li>
+        <li>
+            An Android phone with AR Core Support
+            <ul>
+                <li>
+                    Check for your device <a href="https://developers.google.com/ar/devices">here </a>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            Unity version 2020.3.20f with android build support modules installed
+        </li>
+    </ul>
+<h1>Configuring the Editor for AR Development</h1>
+    <p>Before you can begin making AR apps you will need to change some settings in the editor. These are settings that you should check every time you begin a new AR project.
+    </p>
+    <ol>
+        <li>
+            Install necessary packages and plugins
+        </li>
+        <li>
+            Manage XR Plugins
+        </li>
+        <li>
+            Adjust Player settings
+        </li>
+        <li>
+            Check External Tool settings
+        </li>
+        <li>
+            Change Build settings
+        </li>
+        <li>
+            Set up Android device for testing
+        </li>
+      
+    </ol>
+
+    <h2> Installing necessary packages</h2>
+        <p>To use AR foundations you will need to install the following packages from the package manager:
+        </p>
+        <ol>
+            <li>
+                AR Foundations version 4.1.7
+            </li>
+            <li>
+                ARCore XR plugin version 4.1.7
+            </li>
+        </ol>
+
+    <h2>Manage XR Plugins</h2>
+    <div style="display:inline-block;">
+        <p>After installing the AR Core XR plugin you will need to configure the plugin for android.
+        </p>
+        <ol>
+            <li>
+                Click edit > project settings
+            </li>
+            <li>
+                Click XR Plugin Management on the left side of the window
+            </li>
+            <li>
+                Click the Android tab
+            </li>
+            <li>
+                Check “Initialize XR on Startup” and “ARCore”
+            </li>
+        </ol>
+        <div class="imrow">
+            <div class="imcolumn">
+        <figure style="align-self: right;">
+            <figcaption>The project settings option in the editor.</figcaption>
+            <img src="\assets\images\ARTut\edit.png" style="height:50%;width:50%">
+        </figure>
+    </div>
+    <div class="imcolumn">
+        <figure  style="align-self: left;">
+            <figcaption>The XR plugin manager.</figcaption>
+            <img src="\assets\images\ARTut\plugin.png">
+        </figure>
+    </div>
+    </div>
+    </div>
+    <h2>Adjust Player Settings </h2>
+    <div style="display:inline-block;">
+    <p>You will need to change some of the player settings for AR support. Not changing these settings will cause a black screen when you launch your app.</p>
+    <ol>
+        <li>
+            In the project settings window click “player settings” and select the android tab.
+
+        </li>
+        <li>
+            Expand the “Other settings” section by clicking “other settings”
+        </li>
+        <img src="\assets\images\ARTut\other.png" alt="Other settings menu">
+        <li>
+            Check “auto graphics api”
+
+        </li>
+        <li>
+            Uncheck multithreaded rendering
+
+        </li>
+        <li>
+            Set the Minimum API level to “Android 7.1 Nougat (api level 25)”
+        </li>
+        <img src="\assets\images\ARTut\api.png" alt="Player settings">
+    </ol>    
+</div>
+    <h2>Check External Tool Settings</h2>
+    <div>
+        <p>These settings should already be correct by default but you should check them when you start a new mobile project. </p>
+        <ol>
+            <li>
+                Click edit>preferences>external tools
+            </li>
+            <li>
+                Scroll down to the android section and make sure all the checkboxes are checked.
+            </li>
+            <img src="\assets\images\ARTut\Externaltools.png" alt="Correct settings for external tools">
+        </ol>
+    </div>
+    <h2>Change Build Settings</h2>
+    <div>
+        <p>You will need to change your build settings to Android
+        </p>
+        <ol>
+            <li>
+                Click File>Build settings 
+            </li>
+            <li>
+                Select Android from the platform list
+            </li>
+            <li>
+                Click “switch platform”
+            </li>
+        </ol>
+        <img src="\assets\images\ARTut\Build.png" alt="Correct settings for build">
+    </div>
+
+    <h1>Creating your Sculpture</h1>
+    <p>
+        Once you have adjusted the settings in the editor it is time to start building your scene. This section will cover:
+        <ul>
+            <li>
+                Adding AR Objects to the scene
+            </li>
+            <li>
+                Spawning a 3d object
+            </li>
+            <li>
+                Building and testing on android
+            </li>
+        </ul>
+    </p>
+
+    <h2>Adding AR Objects to the Scene</h2>
+    <div>
+        <p>Every AR scene shares some common components for AR tracking and interaction. Add these objects and scripts to  the scene to create your sculpture.</p>
+        <dl>
+            <dt>AR Session</dt>
+            <dd>AR Session: This object manages the AR session. It is responsible for tracking your device's rotation/position and allows the user to interact with AR objects. This is required in every AR scene, without this object your game will be a black screen!</dd>
+
+            <dt>AR Session Origin</dt>
+            <dd>This object contains the AR camera and is the parent object to all the necessary AR components. This is required in every AR scene, without this object your game will be a black screen!
+            </dd>
+
+            <dt>AR Plane Manager
+            </dt>
+            <dd>This script detects flat surfaces and creates a plane that objects can be instantiated on. 
+            </dd>
+
+            <dt>AR Raycast Manager
+            </dt>
+            <dd>This script keeps track of any anchors in the scene. Anchors are reference points that are used to keep track of where things are in the scene. These will keep objects you instantiate from drifting.
+            </dd>
+        </dl>
+    </div>
+    <h3>TapToPlace</h3>
+    <p>We also need to write a script that instantiates objects into our scene.</p>
+   <ol>
+    <li>
+        Create a new script called "TapToPlace.cs" and copy paste the code on this page.
+    </li>
+    <li>
+        Add it into your hierarchy.
+    </li>
+    <li>
+        Place a cube in the placeable prefab option.
+    </li>
+   </ol>
+   <img src="\assets\images\ARTut\tap.png" alt="TapTOPlace script">
+    <pre>
+        <code>
+            using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
+
+[RequireComponent(typeof(ARRaycastManager))]
+
+public class TAPTOPLACE : MonoBehaviour
+{
+   private ARRaycastManager raycastManager;
+   private GameObject spawnedObject;
+   
+   
+   public GameObject PlaceablePrefab;
+
+   static List &lt ARRaycastHit &gt s_Hits = new List  &lt ARRaycastHit &gt ();
+
+   private void Awake()
+   {
+       raycastManager = GetComponent &lt ARRaycastManager &gt();
+   }
+
+   bool TryGetTouchPosition(out Vector2 touchPosition)
+   {
+       if(Input.touchCount > 0)
+       {
+           touchPosition = Input.GetTouch(0).position;
+           return true;
+
+       }
+       touchPosition = default;
+       return false;
+
+   }
+
+   private void Update()
+   {
+      if(!TryGetTouchPosition(out Vector2 touchPosition)) 
+      {
+          return;
+      }
+      if(raycastManager.Raycast(touchPosition, s_Hits, TrackableType.PlaneWithinPolygon))
+      {
+          var hitPose = s_Hits[0].pose;
+          if(spawnedObject == null)
+          {
+              spawnedObject = Instantiate(PlaceablePrefab, hitPose.position, hitPose.rotation);
+          }
+          else
+          {
+              spawnedObject.transform.position = hitPose.position;
+              spawnedObject.transform.rotation = hitPose.rotation;
+          }
+      }
+   }
+}
+        </code>
+    </pre>
+<h1>Building to Android</h1>
+<ol>
+    <li>
+        Plug in your compatible android device into your PC with a USB cable.
+    </li>
+    <li>
+        Click file>build
+    </li>
+    <li>
+        Change the “run device” setting to your device.
+    </li>
+    <li>
+        Click build and run
+    </li>
+    
+</ol>
+<h2>Building troubleshooting
+</h2>
+<h3>My phone is not being detected. What should I do?
+</h3>
+<ol>
+    <li>
+        Select Build instead of build and run
+    </li>
+    <li>
+        Select a location on your pc for the apk
+    </li>
+    <li>
+        Transfer that apk to your phone using the usb cable
+    </li>
+    <li>
+        Install the apk from your phone
+    </li>
+</ol>
+<h3>I’m getting a gradle error
+</h3>
+<ul>
+    <li>
+        Check if your antivirus is stopping unity from building
+    </li>
+    <li>
+        Check that your “external tools” settings match mine in the “check external tool settings section”
+    </li>
+</ul>
